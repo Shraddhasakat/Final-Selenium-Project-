@@ -1,0 +1,2037 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+import com.google.common.io.Files;
+
+public class KesariFull {
+
+	public static void main(String[] args) throws InterruptedException, IOException
+
+	{
+
+		System.setProperty("webdriver.gecko.driver",
+				"C:\\Users\\Admin\\Desktop\\selenium-java-3.141.59\\geckodriver.exe");
+		WebDriver w = new FirefoxDriver();
+		w.get("https://www.kesari.in/");
+		w.manage().window().maximize();
+
+		Thread.sleep(5000);
+		System.out.println("Title of Page is " + w.getTitle());
+		w.manage().window().maximize();
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		// cross
+		w.findElement(By.xpath("//body/div[@id='coronaUpdate10']/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		System.out.println("Welcome to Kesari Tour");
+		Thread.sleep(5000);
+
+//Screenshot	
+		w.findElement(By.xpath("//body/div[3]/div[2]/div[1]/div[1]/a[1]/img[1]")).click();
+		Thread.sleep(5000);
+		TakesScreenshot t = (TakesScreenshot) w;
+		File src = t.getScreenshotAs(OutputType.FILE);
+		Files.copy(src, new File("D:\\HI\\SS.png"));
+		System.out.println("Successfully Take  Screenshot ");
+
+//SIGN UP PAGE
+		Thread.sleep(2000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.topnav__top div.container div.row div.col-lg-6.col-md-8:nth-child(2) ul.quick-menu.pull-right.list-unstyled.mb-0 li:nth-child(8) > a:nth-child(1)"))
+				.click();
+		Thread.sleep(5000);
+		w.findElement(By.id("firstname")).sendKeys("Shreya");
+		w.findElement(By.id("lastname")).sendKeys("Sakat");
+		w.findElement(By.name("email")).sendKeys("shreya02@gmail.com");
+		w.findElement(By.name("password")).sendKeys("SSS@123sss");
+		w.findElement(By.name("password_c")).sendKeys("SSS@123sss");
+//Drop Down	 
+		w.findElement(By.name("gender")).click();
+		Select s = new Select(w.findElement(By.name("gender")));
+		s.selectByIndex(2);
+		w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[6]/div[1]/input[1]"))
+				.click();
+		w.findElement(By.xpath("//tbody/tr[6]/td[6]/button[1]/span[1]")).click();
+		w.findElement(By.name("mobile")).sendKeys("7653065430");
+		w.findElement(By.id("remember-checkbox")).click();
+		w.findElement(By.xpath(
+				"/html[1]/body[1]/div[3]/section[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[9]/div[1]/div[1]/button[1]"))
+				.click();
+		System.out.println("Successfully Check Sign Up page");
+
+//LOGIN PAGE
+		Thread.sleep(5000);
+
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.topnav__top div.container div.row div.col-lg-6.col-md-8:nth-child(2) ul.quick-menu.pull-right.list-unstyled.mb-0 li:nth-child(7) > a:nth-child(1)"))
+				.click();
+		w.findElement(By.name("email")).sendKeys("shreya02@gmail.com");
+		w.findElement(By.name("password")).sendKeys("SSS@123sss");
+		w.findElement(By.xpath("//button[contains(text(),'Login to Your Account')]")).click();
+		w.findElement(By.linkText("Forgotten Password?")).click();
+		w.findElement(By.linkText("Signup for Kesari")).click();
+		System.out.println("Successfully Check Login Page");
+		TakesScreenshot t2 = (TakesScreenshot) w;
+		File src2 = t2.getScreenshotAs(OutputType.FILE);
+		Files.copy(src2, new File("D:\\HI\\login.png"));
+
+		Thread.sleep(5000);
+
+//cross
+		w.findElement(By.cssSelector(
+				"body.modal-open:nth-child(2) div.modal.in:nth-child(6) div.modal-dialog.modal-lg div.modal-content div.card-spin div.card-header > button.close.close-spin"))
+				.click();
+
+//CONTACT NUMBER
+		Thread.sleep(5000);
+
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.topnav__top div.container div.row div.col-lg-6.col-md-8:nth-child(2) ul.quick-menu.pull-right.list-unstyled.mb-0 li:nth-child(5) > a:nth-child(1)"))
+				.click();
+		System.out.println("Successfully check Contact Number");
+		TakesScreenshot t3 = (TakesScreenshot) w;
+		File src3 = t3.getScreenshotAs(OutputType.FILE); // captured the ss
+
+		Files.copy(src3, new File("D:\\HI\\contact.png"));
+//GIFT HOLIDAY
+		Thread.sleep(5000);
+
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.topnav__top div.container div.row div.col-lg-6.col-md-8:nth-child(2) ul.quick-menu.pull-right.list-unstyled.mb-0 li:nth-child(4) > a:nth-child(1)"))
+				.click();
+
+		// FROM
+
+		Thread.sleep(5000);
+
+		w.findElement(By.name("name")).sendKeys("ShraddhaS");
+		w.findElement(By.name("email")).sendKeys("sss@gmail.com");
+		w.findElement(By.name("tel")).sendKeys("7878955378"); // Phone number
+		w.findElement(By.name("amount")).sendKeys("11000"); // Amount
+		w.findElement(By.name("address")).sendKeys("Pune");
+		System.out.println("Successfully Check Gift Holiday From");
+
+//TO
+		Thread.sleep(5000);
+
+		w.findElement(By.name("Toname")).sendKeys("DivyaD");
+		w.findElement(By.name("Toemail")).sendKeys("ddd@gmail.com");
+		w.findElement(By.name("Totel")).sendKeys("9678776655");
+		w.findElement(By.name("message")).sendKeys("Take Care");
+		w.findElement(By.xpath("//button[contains(text(),'Submit')]")).submit();
+		System.out.println("Successfully Check Gift Holiday To");
+
+		w.navigate();
+
+//iOS APP and windows handing
+		w.findElement(By.xpath("//*[@id=\"header\"]/div[1]/div[1]/div/div/div[2]/ul/li[3]/a")).click();
+		Set<String> Windows = w.getWindowHandles();
+		Iterator<String> it = Windows.iterator();
+
+		String parent_window = it.next();
+		String child_window = it.next();
+		w.switchTo().window(child_window);
+		Thread.sleep(2000);
+		w.switchTo().window(parent_window);
+		Thread.sleep(2000);
+		System.out.println("Reach to parent window ");
+		System.out.println("Successfully Check  ios app ");
+		Thread.sleep(5000);
+
+//ANDROID APP	
+		w.findElement(By.xpath("//*[@id=\"header\"]/div[1]/div[1]/div/div/div[2]/ul/li[2]/a")).click();
+		System.out.println("Reach to ANDROID APP web page ");
+		Set<String> Windows1 = w.getWindowHandles();
+		Iterator<String> it1 = Windows1.iterator();
+		String parent_window1 = it1.next();
+		String child_window1 = it1.next();
+
+		w.switchTo().window(child_window1);
+		Thread.sleep(2000);
+		w.switchTo().window(parent_window1);
+		Thread.sleep(2000);
+		System.out.println("Reach to parent window ");
+		Thread.sleep(5000);
+		System.out.println("Back to home Page");
+		System.out.println("Successfully Check Android App");
+		Thread.sleep(5000);
+//POST BOOKING INFO
+		w.findElement(By.xpath("//*[@id=\"header\"]/div[1]/div[1]/div/div/div[2]/ul/li[2]/a")).click();
+
+		Set<String> Windows2 = w.getWindowHandles();
+		Iterator<String> it2 = Windows2.iterator();
+
+		String parent_window2 = it2.next();
+		String child_window2 = it2.next();
+
+		w.switchTo().window(child_window2);
+		Thread.sleep(3000);
+		w.switchTo().window(parent_window2);
+		Thread.sleep(2000);
+		System.out.println("Back to Home page from Post Booking Info ");
+		System.out.println("Successfully Check Post Biooking Info");
+		Thread.sleep(5000);
+//MORE
+		Actions a = new Actions(w);
+		a.moveToElement(w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children:nth-child(10) > a:nth-child(1)")))
+				.perform();
+
+		System.out.println("Successfully Check More");
+//Guest Corner		
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children:nth-child(10) ul.singlemenu.left.list-unstyled.mb-0:nth-child(2) li:nth-child(1) > a:nth-child(1)"))
+				.click();
+		System.out.println("Successfully Check  Guest Corner");
+//Kesari Acadami		
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children:nth-child(10) ul.singlemenu.left.list-unstyled.mb-0:nth-child(2) li:nth-child(2) > a:nth-child(1)"))
+				.click();
+//Register	
+		w.findElement(
+				By.xpath("/html[1]/body[1]/div[3]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]"))
+				.click();
+//Name	
+		w.findElement(
+				By.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("Shree");
+		w.findElement(
+				By.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[2]/div[1]/input[1]"))
+				.sendKeys("Rohit");
+		w.findElement(
+				By.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[3]/div[1]/input[1]"))
+				.sendKeys("Sharma");
+		w.findElement(
+				By.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[2]/div[1]/div[1]/input[1]"))
+				.sendKeys("22");
+		w.findElement(
+				By.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[2]/div[2]/div[1]/input[1]"))
+				.sendKeys("7877977779");
+
+		w.findElement(
+				By.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[2]/div[3]/div[1]/input[1]"))
+				.sendKeys("srs@gamil.com");
+		w.findElement(
+				By.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[3]/div[1]/div[1]/input[1]"))
+				.sendKeys("Pune");
+		w.findElement(
+				By.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[3]/div[2]/div[1]/input[1]"))
+				.sendKeys("458927");
+		w.findElement(
+				By.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[3]/div[3]/div[1]/select[1]"))
+				.click();
+		Select s1 = new Select(w.findElement(By
+				.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[3]/div[3]/div[1]/select[1]")));
+		s1.selectByIndex(2);
+//submit	
+		w.findElement(By.xpath("/html[1]/body[1]/div[9]/div[1]/div[1]/div[1]/form[1]/div[2]/button[1]")).submit();
+		w.navigate().back();
+		Thread.sleep(2000);
+
+//Tours at a glance 		
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children:nth-child(10) ul.singlemenu.left.list-unstyled.mb-0:nth-child(2) li:nth-child(3) > a:nth-child(1)"))
+				.click();
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.tab-container.nav-tabs-custom ul.nav.nav-tabs li.active:nth-child(2) > a:nth-child(1)"))
+				.click();
+		w.navigate().back();
+		Thread.sleep(5000);
+//Marathi Test 		
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children:nth-child(10) ul.singlemenu.left.list-unstyled.mb-0:nth-child(2) li:nth-child(4) > a:nth-child(1)"))
+				.click();
+		w.navigate().back();
+//FAQ		
+		Thread.sleep(2000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children:nth-child(10) ul.singlemenu.left.list-unstyled.mb-0:nth-child(2) li:nth-child(5) > a:nth-child(1)"))
+				.click();
+		// w.findElement(By.linkText("Group Tours")).click();
+		// Thread.sleep(5000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.tab-container.tab-container--faq ul.nav.nav-tabs.nav-tabs-style-1 li.active:nth-child(2) > a:nth-child(1)"))
+				.click();
+		w.navigate().back();
+//How To BOOk
+
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children:nth-child(10) ul.singlemenu.left.list-unstyled.mb-0:nth-child(2) li:nth-child(6) > a:nth-child(1)"))
+				.click();
+
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children:nth-child(10) ul.singlemenu.left.list-unstyled.mb-0:nth-child(2) li:nth-child(8) > a:nth-child(1)"))
+				.click();
+		w.navigate().back();
+
+		// group tours
+		Actions a1 = new Actions(w);
+
+		WebElement wb = w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children.megamenu-menu.group-tour-menu:nth-child(1) > a:nth-child(1)"));
+		a.moveToElement(wb).click().build().perform();
+		Thread.sleep(3000);
+
+		// Dubai And Middle East
+		w.findElement(By.linkText("Dubai and MiddleEast")).click();
+		System.out.println(" Dubai And MiddleEast site Open successfully.");
+		Thread.sleep(5000);
+		// Dubai with theme parks premium ...enquiry
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div[2]/div[1]/article/figure/div[2]/div[2]/a")).click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("prachi patil");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]"))
+				.sendKeys("pen");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[3]/div[1]/input[1]"))
+				.sendKeys("19");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[4]/div[1]/input[1]"))
+				.sendKeys("prachi123@gmail.com");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[5]/div[1]/input[1]"))
+				.sendKeys("8765432198");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[6]/div[1]/input[1]")).click();
+		w.findElement(By.xpath("//tbody/tr[1]/td[6]/button[1]/span[1]")).click();
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[7]/textarea[1]"))
+				.sendKeys("Not required......");
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		// w.findElement(By.cssSelector("body.modal-open:nth-child(2)
+		// div.modal.ng-isolate-scope.in:nth-child(20) div.modal-dialog.modal-lg
+		// div.modal-content div.ng-scope div.modal-body.no-padding.modal-body--bg
+		// form.modal__enquiry-form.ng-invalid.ng-invalid-required.ng-valid-pattern.ng-valid-min.ng-valid-date.ng-dirty
+		// > button.btn.btn-success.btn-block:nth-child(8)")).click();
+		System.out.println("Submit Enquiry form Successfully....");
+		Thread.sleep(5000);
+
+		// left site elements
+		System.out.println(
+				w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/h4[2]")).getText());
+		Thread.sleep(3000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope:nth-child(3) v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(1) v-pane-header.ng-scope.ng-isolate-scope:nth-child(1) div:nth-child(1) h4.panel-title.ng-scope > a:nth-child(1)"))
+				.click();
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope:nth-child(3) v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(4) v-pane-header.ng-scope.ng-isolate-scope:nth-child(1) div:nth-child(1) h4.panel-title.ng-scope > a:nth-child(1)"))
+				.click();
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope:nth-child(3) v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(5) v-pane-header.ng-scope.ng-isolate-scope:nth-child(1) div:nth-child(1) h4.panel-title.ng-scope > a:nth-child(1)"))
+				.click();
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[6]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("2000");
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[6]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[3]/input[1]"))
+				.sendKeys("5000");
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[6]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[4]/button[1]"))
+				.click();
+		System.out.println("Your Tour Package are Coming Soon.....");
+		Thread.sleep(5000);
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[7]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("5000");
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[7]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[3]/input[1]"))
+				.sendKeys("10000");
+		w.findElement(By.xpath(
+				"//*[@id=\"main\"]/div[3]/div[1]/v-accordion/v-pane[7]/v-pane-content/div/div/form/div/div[4]/button"))
+				.click();
+		System.out.println("Your Tour Package are Coming Soon.....");
+		Thread.sleep(5000);
+
+		/*
+		 * w.findElement(By.xpath("//input[@id='startDatePicker']")).click();
+		 * Thread.sleep(3000);
+		 * w.findElement(By.cssSelector("#datepicker-3487-6058-18 > button > span")).
+		 * click(); Thread.sleep(2000);
+		 * w.findElement(By.xpath("//input[@id='endDatePicker']")).click();
+		 * Thread.sleep(2000);
+		 * w.findElement(By.xpath("//*[@id=\"datepicker-3487-6058-24\"]/button")).click(
+		 * ); Thread.sleep(5000);
+		 * 
+		 * w.findElement(By.xpath(
+		 * "//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[8]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[3]/div[1]/div[1]/span[1]/i[1]"
+		 * )).click();
+		 * w.findElement(By.xpath("//span[contains(text(),'June')]")).click();
+		 * w.findElement(By.xpath(
+		 * "//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[8]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[4]/div[1]/button[1]"
+		 * )).click(); System.out.println("Your Tour Package are Coming Soon.....");
+		 * Thread.sleep(3000);
+		 */
+		System.out.println(
+				w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/h4[2]")).getText());
+
+		// w.navigate().back();
+		Thread.sleep(3000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div:nth-child(1) ol.breadcrumb:nth-child(1) li:nth-child(2) > a.ng-binding"))
+				.click();
+		Thread.sleep(5000);
+
+		// shriLanka And Maldives
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container div.row div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(1) v-pane-content.ng-scope.ng-isolate-scope:nth-child(2) div.panel-content.ng-scope ul.list-unstyled.mb-0 li.ng-scope:nth-child(2) div.awesome-checkbox.awesome-checkbox--hover > a.label.ng-binding"))
+				.click();
+		System.out.println("SriLanka And Maldivs Site Open Successfully.");
+		Thread.sleep(5000);
+		// enquiry...........shri lanka maldives economy
+		w.findElement(By.linkText("Enquiry")).click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("Komal Mhatre");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]"))
+				.sendKeys("pen");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[3]/div[1]/input[1]"))
+				.sendKeys("5");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[4]/div[1]/input[1]"))
+				.sendKeys("komal123@gmail.com");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[5]/div[1]/input[1]"))
+				.sendKeys("8760262198");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[6]/div[1]/input[1]")).click();
+		w.findElement(By.xpath("//span[contains(text(),'31')]")).click();
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[7]/textarea[1]"))
+				.sendKeys("Not required......");
+		// w.findElement(By.xpath("//button[contains(text(),'Submit your
+		// Enquiry')]")).click();
+		w.findElement(By.cssSelector(
+				"body.modal-open:nth-child(2) div.modal.ng-isolate-scope.in:nth-child(20) div.modal-dialog.modal-lg div.modal-content div.ng-scope div.modal-header.modal-header--transparent.modal-header--bg > button.close"))
+				.click();
+		System.out.println("Submit Enquiry form Successfully....");
+		Thread.sleep(5000);
+
+		// left site passeges
+		System.out.println(
+				w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/h4[2]")).getText());
+		Thread.sleep(2000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope:nth-child(3) v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(1) v-pane-header.ng-scope.ng-isolate-scope:nth-child(1) div:nth-child(1) h4.panel-title.ng-scope > a:nth-child(1)"))
+				.click();
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope:nth-child(3) v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(4) v-pane-header.ng-scope.ng-isolate-scope:nth-child(1) div:nth-child(1) h4.panel-title.ng-scope > a:nth-child(1)"))
+				.click();
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope:nth-child(3) v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(5) v-pane-header.ng-scope.ng-isolate-scope:nth-child(1) div:nth-child(1) h4.panel-title.ng-scope > a:nth-child(1)"))
+				.click();
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[6]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("2000");
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[6]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[3]/input[1]"))
+				.sendKeys("5000");
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[6]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[4]/button[1]"))
+				.click();
+		System.out.println("Your Tour Package of ShriLanka And Maldive is Coming Soon......");
+		Thread.sleep(2000);
+
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[7]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("5000");
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[7]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[3]/input[1]"))
+				.sendKeys("10000");
+		// w.findElement(By.xpath("/html[1]/body[1]/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[7]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[4]/button[1]")).click();
+		Thread.sleep(3000);
+		System.out.println("Your Tour Package of ShriLanka And Maldive is Coming Soon.....");
+
+		/*
+		 * w.findElement(By.xpath("//input[@id='startDatePicker']")).click();
+		 * w.findElement(By.cssSelector("#datepicker-4461-3623-10 > button")).click();
+		 * w.findElement(By.xpath("//input[@id='endDatePicker']")).click();
+		 * w.findElement(By.xpath("//*[@id=\"datepicker-2515-8017-24\"]/button")).click(
+		 * ); Thread.sleep(4000); w.findElement(By.xpath(
+		 * "//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[8]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[3]/div[1]/div[1]/span[1]/i[1]"
+		 * )).click();
+		 * w.findElement(By.xpath("//span[contains(text(),'June')]")).click();
+		 * w.findElement(By.xpath(
+		 * "//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[8]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[4]/div[1]/button[1]"
+		 * )).click(); System.out.
+		 * println("Your Tour Package of ShriLanka And Maldive is Coming Soon.....");
+		 */
+		Thread.sleep(3000);
+		System.out.println(
+				w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/h4[2]")).getText());
+		Thread.sleep(3000);
+		w.navigate().back();
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div:nth-child(1) ol.breadcrumb:nth-child(1) li:nth-child(2) > a.ng-binding"))
+				.click();
+
+		// Scrolling page
+		JavascriptExecutor js = (JavascriptExecutor) w;
+		js.executeScript("window.scrollBy(0, 2000)");
+		Thread.sleep(2000);
+		js.executeScript("window.scrollBy(0, -2000)");
+		Thread.sleep(5000);
+
+		System.out.println("THANK YOU for visiting Group Tours");
+
+		// Indian tour
+
+		Actions a3 = new Actions(w);
+		WebElement wb2 = w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children.megamenu-menu.group-tour-menu:nth-child(1) > a:nth-child(1)"));
+		a3.moveToElement(wb2).click().build().perform();
+		Thread.sleep(3000);
+
+		// Andaman
+		System.out.println("Check for Indian Tours");
+		Thread.sleep(3000);
+
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container div.row div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(2) v-pane-content.ng-scope.ng-isolate-scope:nth-child(2) div.ng-scope div.panel-content ul.list-unstyled li.ng-scope:nth-child(1) div.awesome-checkbox.awesome-checkbox--hover > a.label.ng-binding"))
+				.click();
+		Thread.sleep(5000);
+		System.out.println("Andaman Tours Packages.");
+
+		// Andaman MFL Enquiry
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div[2]/div[1]/article/figure/div[2]/div[2]/a")).click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("komal Mhatre");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]"))
+				.sendKeys("Raigad");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[3]/div[1]/input[1]"))
+				.sendKeys("09");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[4]/div[1]/input[1]"))
+				.sendKeys("komal123@gmail.com");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[5]/div[1]/input[1]"))
+				.sendKeys("8765432198");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[6]/div[1]/input[1]")).click();
+		w.findElement(By.xpath("//thead/tr[1]/th[3]/button[1]/i[1]")).click();
+		w.findElement(By.xpath("//span[contains(text(),'17')]")).click();
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[7]/textarea[1]"))
+				.sendKeys("Not required......");
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		Thread.sleep(5000);
+		// Left side elements
+		System.out.println(
+				w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/h4[2]")).getText());
+		Thread.sleep(2000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope:nth-child(3) v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(1) v-pane-header.ng-scope.ng-isolate-scope:nth-child(1) div:nth-child(1) h4.panel-title.ng-scope > a:nth-child(1)"))
+				.click();
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope:nth-child(3) v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(4) v-pane-header.ng-scope.ng-isolate-scope:nth-child(1) div:nth-child(1) h4.panel-title.ng-scope > a:nth-child(1)"))
+				.click();
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope:nth-child(3) v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(5) v-pane-header.ng-scope.ng-isolate-scope:nth-child(1) div:nth-child(1) h4.panel-title.ng-scope > a:nth-child(1)"))
+				.click();
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[6]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("23000");
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[6]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[3]/input[1]"))
+				.sendKeys("70000");
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[6]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[4]/button[1]"))
+				.click();
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[7]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("20000");
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[7]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[3]/input[1]"))
+				.sendKeys("30000");
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[7]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[4]/button[1]"))
+				.click();
+		Thread.sleep(5000);
+
+		Thread.sleep(3000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div:nth-child(1) ol.breadcrumb:nth-child(1) li:nth-child(2) > a.ng-binding"))
+				.click();
+		Thread.sleep(5000);
+		System.out.println("THANK YOU for visiting ANDAMAN Tours");
+
+		// Andra Pradesh
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container div.row div.col-md-2.col-sm-3.filter-column v-accordion.vAccordion--default.ng-isolate-scope v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded:nth-child(2) v-pane-content.ng-scope.ng-isolate-scope:nth-child(2) div.ng-scope div.panel-content ul.list-unstyled li.ng-scope:nth-child(2) div.awesome-checkbox.awesome-checkbox--hover > a.label.ng-binding"))
+				.click();
+		Thread.sleep(5000);
+		System.out.println("Andra Pradesh Tours Packages.");
+
+		// Enquiry for Hydrabad Ramoji.................view details
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-10.col-sm-9.col-xs-12 div.row.ng-scope:nth-child(2) div.col-md-4.col-sm-6.col-xs-12.ng-scope:nth-child(1) article.box figure.badge-container div.box__details:nth-child(7) div.action-btn.ng-scope > a.btn.btn-grey.ng-scope:nth-child(1)"))
+				.click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//button[contains(text(),'Aug')]")).click();
+		w.findElement(By.xpath("//tbody/tr[1]/td[1]/div[1]/p[2]")).click();
+		Thread.sleep(3000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		Thread.sleep(3000);
+		w.findElement(By.xpath("//tbody/tr[1]/td[1]/div[2]/p[1]")).click();
+		Thread.sleep(3000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		Thread.sleep(5000);
+		System.out.println("Tour Price Details Display");
+		// w.findElement(By.xpath("/html[1]/body[1]/div[3]/section[1]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/button[1]")).click();
+		// w.findElement(By.cssSelector("div.ng-scope:nth-child(3)
+		// section.ng-scope:nth-child(3) div.container div.row:nth-child(3)
+		// div.col-md-3.col-xs-12 div.sidebar-detail-page
+		// div.sidebar-detail-page__tour-dep-box.box-white.shadow >
+		// button.btn.btn-primary.btn-block.ng-scope:nth-child(10)")).click();
+		// Andra pradesh Hydrabad ramoji.............view details/Highlights
+		Thread.sleep(5000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container div.row:nth-child(3) div.col-md-9.col-xs-12 div.row div.col-xs-12 div.tab-container:nth-child(1) ul.nav.nav-tabs.nav-tabs-style-1 li.ng-scope:nth-child(2) > a:nth-child(1)"))
+				.click();
+		Thread.sleep(5000);
+		// w.findElement(By.partialLinkText("Email this itinera")).click();
+		// w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]")).sendKeys("komal123@gmail.com");
+		// w.findElement(By.xpath("//button[contains(text(),'Send')]")).click();
+		// w.findElement(By.partialLinkText("Hyderab")).click();
+		w.navigate().back();
+		Thread.sleep(5000);
+
+		// Andra pradesh Hydrabad ramoji...............Date and Cost
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div[2]/div[1]/article/figure/div[7]/div[2]/a[2]"))
+				.click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//button[contains(text(),'Close')]")).click();
+		Thread.sleep(5000);
+
+		// Andra pradesh Hydrabad ramoji...............enquiry
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-10.col-sm-9.col-xs-12 div.row.ng-scope:nth-child(2) div.col-md-4.col-sm-6.col-xs-12.ng-scope:nth-child(1) article.box figure.badge-container div.box__details:nth-child(7) div.action-btn.ng-scope > a.btn.btn-grey:nth-child(3)"))
+				.click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		Thread.sleep(4000);
+		/*
+		 * w.findElement(By.xpath(
+		 * "//*[@id=\"main\"]/div[3]/div[2]/div[2]/div[1]/article/figure/div[7]/div[2]/a[3]"
+		 * )).sendKeys("Komal"); w.findElement(By.xpath(
+		 * "//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]")).
+		 * sendKeys("alibag"); w.findElement(By.xpath(
+		 * "//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[3]/div[1]/input[1]")).
+		 * sendKeys("7"); w.findElement(By.xpath(
+		 * "//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[4]/div[1]/input[1]")).
+		 * sendKeys("komal@gmail.com"); w.findElement(By.xpath(
+		 * "//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[5]/div[1]/input[1]")).
+		 * sendKeys("8765432789");
+		 * 
+		 * w.findElement(By.xpath(
+		 * "//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[6]/div[1]/input[1]")).
+		 * click(); w.findElement(By.xpath("//span[contains(text(),'31')]")).click();
+		 * w.findElement(By.xpath(
+		 * "//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[7]/textarea[1]")).
+		 * sendKeys("not Required....");
+		 * w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/button[1]")
+		 * ).click(); Thread.sleep(5000); //not working
+		 */
+		// Andra pradesh ........pithapuram kuravpur Enquiry
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div.row.hidden-xs:nth-child(4) div.col-md-10.col-sm-9.col-xs-12 div.row.ng-scope:nth-child(2) div.col-md-4.col-sm-6.col-xs-12.ng-scope:nth-child(2) article.box figure.badge-container div.box__details div.action-btn.ng-scope > a.btn.btn-grey"))
+				.click();
+		Thread.sleep(3000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]"))
+				.sendKeys("komal");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]"))
+				.sendKeys("panvel");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[3]/div[1]/input[1]"))
+				.sendKeys("7");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[4]/div[1]/input[1]"))
+				.sendKeys("komal@gmail.com");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[5]/div[1]/input[1]"))
+				.sendKeys("9876543212");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[6]/div[1]/input[1]")).click();
+		w.findElement(By.xpath("//tbody/tr[6]/td[7]/button[1]")).click();
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[7]/textarea[1]"))
+				.sendKeys("incomplete site");
+		Thread.sleep(2000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		System.out.println("Pithapuram Kuravpur Enquiry submited.");
+		Thread.sleep(6000);
+
+		// Regional Departure
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[1]/v-pane-content[1]/div[1]/div[1]/ul[1]/li[1]/div[1]/label[1]"))
+				.click();
+		System.out.println("Mumbai  Tours Packages are coming soon....");
+		Thread.sleep(5000);
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[1]/v-pane-content[1]/div[1]/div[1]/ul[1]/li[2]/div[1]/label[1]"))
+				.click();
+		System.out.println("Banguluru  Tours Packages are coming soon....");
+		Thread.sleep(4000);
+		// departure Part
+		w.findElement(By.xpath(
+				"//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[2]/v-pane-content[1]/div[1]/div[1]/ul[1]/li[1]/div[1]/label[1]"))
+				.click();
+		System.out.println("August2021  Tours Packages are coming soon....");
+		Thread.sleep(5000);
+		// w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/v-accordion[1]/v-pane[2]/v-pane-content[1]/div[1]/div[1]/ul[1]/li[2]/div[1]/label[1]")).click();
+		System.out.println("September 2021 Tours Packages are coming soon....");
+		// System.out.println(w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[3]/div[1]/h4[2]")).getText());
+		Thread.sleep(5000);
+		// Back to Indian Tours
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container.container-mobile div:nth-child(1) ol.breadcrumb:nth-child(1) li:nth-child(2) > a.ng-binding"))
+				.click();
+		System.out.println("THANK YOU for visiting ANDRA PRADESH Tours");
+		Thread.sleep(5000);
+
+//Speciality tour
+
+		Actions a4 = new Actions(w);
+		WebElement wb4 = w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children:nth-child(2) > a:nth-child(1)"));
+		a4.moveToElement(wb4).build().perform();
+		Thread.sleep(3000);
+		// Chota break
+		w.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/ul/li[1]/a")).click();
+		System.out.println("Welcome To Chota Break Tours Packages.");
+		Thread.sleep(5000);
+
+		w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[1]/div[1]/h4[1]")).getText();
+		Thread.sleep(5000);
+
+		// left side
+		w.findElement(By.xpath("//label[contains(text(),'Mumbai')]")).click();
+		System.out.println("Mumbai Tour Package is Coming Soon");
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//label[contains(text(),'Cochin')]")).click();
+		System.out.println("Cochin Tour Package is Coming Soon");
+		Thread.sleep(5000);
+
+		/*
+		 * //Left side down
+		 * w.findElement(By.xpath("//input[@id='Upto 20,000']")).click();
+		 * System.out.println("Upto 20000 Available packages are display.");
+		 * Thread.sleep(7000);
+		 * w.findElement(By.xpath("//label[contains(text(),'Above 20,000')]")).click();
+		 * System.out.println("Above 20000 Available packages are display.");
+		 * w.navigate().back(); Thread.sleep(5000);
+		 * 
+		 * w.findElement(By.xpath(
+		 * "//body/div[3]/section[1]/div[1]/div[1]/div[1]/div[1]/v-accordion[1]/v-pane[3]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]"
+		 * )).sendKeys("20000"); w.findElement(By.xpath(
+		 * "//body/div[3]/section[1]/div[1]/div[1]/div[1]/div[1]/v-accordion[1]/v-pane[3]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[3]/input[1]"
+		 * )).sendKeys("40000"); w.findElement(By.xpath(
+		 * "//body/div[3]/section[1]/div[1]/div[1]/div[1]/div[1]/v-accordion[1]/v-pane[3]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[4]/button[1]"
+		 * )).click(); Thread.sleep(5000);
+		 * w.findElement(By.xpath("//label[contains(text(),'5 to 5 Days')]")).click();
+		 * w.findElement(By.xpath(
+		 * "//body/div[3]/section[1]/div[1]/div[1]/div[1]/div[1]/v-accordion[1]/v-pane[4]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]"
+		 * )).sendKeys("2000"); w.findElement(By.xpath(
+		 * "//body/div[3]/section[1]/div[1]/div[1]/div[1]/div[1]/v-accordion[1]/v-pane[4]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[3]/input[1]"
+		 * )).sendKeys("40000"); w.findElement(By.xpath(
+		 * "//body/div[3]/section[1]/div[1]/div[1]/div[1]/div[1]/v-accordion[1]/v-pane[4]/v-pane-content[1]/div[1]/div[1]/form[1]/div[1]/div[4]/button[1]"
+		 * )).click(); Thread.sleep(5000);
+		 * w.findElement(By.xpath("//input[@id='startDatePicker']")).click();
+		 * w.findElement(By.xpath("//tbody/tr[6]/td[8]/button[1]/span[1]")).click();
+		 * w.findElement(By.xpath("//input[@id='endDatePicker']")).click();
+		 * w.findElement(By.xpath("//thead/tr[1]/th[3]/button[1]/i[1]")).click();
+		 * w.findElement(By.xpath("//span[contains(text(),'25')]")).click();
+		 */
+
+		// back to speciality tour
+		w.findElement(By.xpath("//*[@id=\"main\"]/ol/li[2]/a")).click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[1]/v-accordion/v-pane/v-pane-content/div/div/ul/li[1]/div/a"))
+				.click();
+		Thread.sleep(5000);
+
+		// Enquiry_view details..........COIMBATORE
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[1]/div[2]/div[2]/div[1]/article/figure/div[6]/a/ul[1]")).click();
+		Thread.sleep(7000);
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[1]/button")).click();
+		w.findElement(By.xpath("//*[@id=\"tbody\"]/table/tbody/tr[1]/td[1]/div[1]/p[2]")).click();
+		Thread.sleep(3000);
+		w.findElement(By.xpath("//*[@id=\"room-booking\"]/div/div[1]/button")).click();
+		Thread.sleep(3000);
+		System.out.println("Tour Price Details Display");
+		w.findElement(By.xpath("//*[@id=\"myCarousel\"]/div[2]/div[2]/button")).click();
+		Thread.sleep(5000);
+		// Date And Cost // Elements are enable to intercept
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[1]/div[2]/div[2]/div[1]/article/figure/div[7]/div[2]/a[2]"))
+				.click();
+		Thread.sleep(4000);
+		w.findElement(By.xpath("/html/body/div[9]/div/div/div[3]/button")).click();
+		Thread.sleep(5000);
+		// Enquiry
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[1]/div[2]/div[2]/div[1]/article/figure/div[7]/div[2]/a[3]"))
+				.click();
+		Thread.sleep(3000);
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		System.out.println("Enquiry of COIMBATORE is submited ");
+		Thread.sleep(5000);
+		// Speciality tour
+		Actions a5 = new Actions(w);
+		WebElement wb5 = w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.menu-item-has-children:nth-child(2) > a:nth-child(1)"));
+		a5.moveToElement(wb5).build().perform();
+		Thread.sleep(3000);
+
+		// Honeymoon Special
+		w.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/ul/li[2]/a")).click();
+		System.out.println("Welcome To Honeymoon Special Tours Packages.\n");
+		Thread.sleep(6000);
+//SHIMLA MANALI VIEW DETAILS
+		/*
+		 * //View Details w.findElement(By.
+		 * cssSelector("div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container.container-mobile div.row.hidden-xs:nth-child(2) div.col-md-10.col-sm-9.col-xs-12 div.row.ng-scope:nth-child(2) div.col-md-4.col-sm-6.col-xs-12.ng-scope:nth-child(1) article.box figure.badge-container div.box__details:nth-child(24) div.action-btn.ng-scope > a.btn.btn-grey.ng-scope:nth-child(1)"
+		 * )).click(); Thread.sleep(3000);
+		 * w.findElement(By.xpath("//button[contains(text(),'May')]")).click();
+		 * w.findElement(By.xpath("//tbody/tr[1]/td[1]/div[1]/p[2]")).click();
+		 * Thread.sleep(3000); w.findElement(By.xpath(
+		 * "//body/div[9]/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		 * Thread.sleep(3000); System.out.println("Tour Price Details Display");
+		 * w.findElement(By.xpath("//body/div[5]")).click(); Thread.sleep(3000);
+		 * w.findElement(By.xpath(
+		 * "//body/div[9]/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		 * Thread.sleep(5000); System.out.println("Tour Price Details Display");
+		 * 
+		 * w.findElement(By.xpath("//button[contains(text(),'Enquiry')]")).click();
+		 * w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/button[1]")
+		 * ).click();
+		 * 
+		 * w.findElement(By.
+		 * xpath("//button[contains(text(),'Tour Price Inclusion & Exclusion')]")).click
+		 * ();
+		 * w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/button[1]")
+		 * ).click();
+		 * 
+		 * //highlights w.findElement(By.
+		 * cssSelector("div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container div.row:nth-child(3) div.col-md-9.col-xs-12 div.row div.col-xs-12 div.tab-container:nth-child(1) ul.nav.nav-tabs.nav-tabs-style-1 li.ng-scope:nth-child(2) > a:nth-child(1)"
+		 * )).click(); Thread.sleep(5000); w.findElement(By.
+		 * cssSelector("div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container div.row:nth-child(3) div.col-md-9.col-xs-12 div.row div.col-xs-12 div.tab-container:nth-child(1) ul.nav.nav-tabs.nav-tabs-style-1 li:nth-child(3) > a.ng-scope"
+		 * )).click();
+		 * 
+		 * //date and cost w.findElement(By.
+		 * cssSelector("div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container.container-mobile div.row.hidden-xs:nth-child(2) div.col-md-10.col-sm-9.col-xs-12 div.row.ng-scope:nth-child(2) div.col-md-4.col-sm-6.col-xs-12.ng-scope:nth-child(1) article.box figure.badge-container div.box__details:nth-child(24) div.action-btn.ng-scope > a.btn.btn-grey:nth-child(2)"
+		 * )).click(); Thread.sleep(5000);
+		 * w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/button[1]")).click
+		 * (); Thread.sleep(3000);
+		 */
+		// View Details
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container.container-mobile div.row.hidden-xs:nth-child(2) div.col-md-10.col-sm-9.col-xs-12 div.row.ng-scope:nth-child(2) div.col-md-4.col-sm-6.col-xs-12.ng-scope:nth-child(1) article.box figure.badge-container div.box__details:nth-child(24) div.action-btn.ng-scope > a.btn.btn-grey.ng-scope:nth-child(1)"))
+				.click();
+		Thread.sleep(5000);
+		w.navigate().back();
+		Thread.sleep(5000);
+
+		// date and cost
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container.container-mobile div.row.hidden-xs:nth-child(2) div.col-md-10.col-sm-9.col-xs-12 div.row.ng-scope:nth-child(2) div.col-md-4.col-sm-6.col-xs-12.ng-scope:nth-child(1) article.box figure.badge-container div.box__details:nth-child(24) div.action-btn.ng-scope > a.btn.btn-grey:nth-child(2)"))
+				.click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/button[1]")).click();
+		Thread.sleep(3000);
+
+		// Enquiry...............MUNNAR KODAIKONAL OOTY
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[1]/div[2]/div[2]/div[3]/article/figure/div[2]/div[2]/a")).click();
+		Thread.sleep(4000);
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[1]/div/input")).sendKeys("Shradda sakat");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[2]/div/input")).sendKeys("pune");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[3]/div/input")).sendKeys("5");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[4]/div/input")).sendKeys("shraddha@gmail.com");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[5]/div/input")).sendKeys("7654321345");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		Thread.sleep(5000);
+
+		// left side
+		w.findElement(By.xpath(
+				"//*[@id=\"main\"]/div[1]/div[1]/v-accordion/v-pane[1]/v-pane-content/div/div/ul/li[2]/div/label"))
+				.click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath(
+				"//*[@id=\"main\"]/div[1]/div[1]/v-accordion/v-pane[1]/v-pane-content/div/div/ul/li[4]/div/label"))
+				.click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath(
+				"//*[@id=\"main\"]/div[1]/div[1]/v-accordion/v-pane[1]/v-pane-content/div/div/ul/li[5]/div/label"))
+				.click();
+		Thread.sleep(5000);
+
+		// back to speciality tour
+		w.findElement(By.xpath("//*[@id=\"main\"]/ol/li[2]/a")).click();
+		w.manage().window().maximize();
+		JavascriptExecutor js7 = (JavascriptExecutor) w;
+		Thread.sleep(4000);
+		js7.executeScript("window.scrollBy(0, 2000)");
+		Thread.sleep(4000);
+		js7.executeScript("window.scrollBy(0, -2000)");
+		Thread.sleep(5000);
+
+		// Marigold
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.row div.col-md-2.col-sm-3.hidden-xs v-accordion.vAccordion--default.ng-isolate-scope v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded v-pane-content.ng-scope.ng-isolate-scope:nth-child(2) div.panel-content.ng-scope ul.list-unstyled.mb-0 li.ng-scope:nth-child(3) div.awesome-checkbox.awesome-checkbox--hover > a.label.ng-binding"))
+				.click();
+		System.out.println("Welcome To Marigold Tours Packages.\n");
+		Thread.sleep(5000);
+
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container.container-mobile div:nth-child(1) ol.breadcrumb:nth-child(1) li:nth-child(2) > a.ng-binding"))
+				.click();
+		Thread.sleep(5000);
+
+		// My Fair ledy
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.row div.col-md-2.col-sm-3.hidden-xs v-accordion.vAccordion--default.ng-isolate-scope v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded v-pane-content.ng-scope.ng-isolate-scope:nth-child(2) div.panel-content.ng-scope ul.list-unstyled.mb-0 li.ng-scope:nth-child(4) div.awesome-checkbox.awesome-checkbox--hover > a.label.ng-binding"))
+				.click();
+		System.out.println("Welcome To My Fair Lady Tours Packages.\n");
+		Thread.sleep(5000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container.container-mobile div:nth-child(1) ol.breadcrumb:nth-child(1) li:nth-child(2) > a.ng-binding"))
+				.click();
+		Thread.sleep(5000);
+
+		// student Special
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.row div.col-md-2.col-sm-3.hidden-xs v-accordion.vAccordion--default.ng-isolate-scope v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded v-pane-content.ng-scope.ng-isolate-scope:nth-child(2) div.panel-content.ng-scope ul.list-unstyled.mb-0 li.ng-scope:nth-child(6) div.awesome-checkbox.awesome-checkbox--hover > a.label.ng-binding"))
+				.click();
+		System.out.println("Welcome To Student Special Tours Packages.\n");
+		Thread.sleep(5000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container.container-mobile div:nth-child(1) ol.breadcrumb:nth-child(1) li:nth-child(2) > a.ng-binding"))
+				.click();
+		Thread.sleep(5000);
+
+		// Super Economy
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.row div.col-md-2.col-sm-3.hidden-xs v-accordion.vAccordion--default.ng-isolate-scope v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded v-pane-content.ng-scope.ng-isolate-scope:nth-child(2) div.panel-content.ng-scope ul.list-unstyled.mb-0 li.ng-scope:nth-child(7) div.awesome-checkbox.awesome-checkbox--hover > a.label.ng-binding"))
+				.click();
+		System.out.println("Welcome To Supar Economy Tours Packages.\n");
+		Thread.sleep(5000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container.container-mobile div:nth-child(1) ol.breadcrumb:nth-child(1) li:nth-child(2) > a.ng-binding"))
+				.click();
+		Thread.sleep(5000);
+
+		// Veg Tour
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.row div.col-md-2.col-sm-3.hidden-xs v-accordion.vAccordion--default.ng-isolate-scope v-pane.shadow.panel.ng-scope.ng-isolate-scope.is-expanded v-pane-content.ng-scope.ng-isolate-scope:nth-child(2) div.panel-content.ng-scope ul.list-unstyled.mb-0 li.ng-scope:nth-child(8) div.awesome-checkbox.awesome-checkbox--hover > a.label.ng-binding"))
+				.click();
+		System.out.println("Welcome To Veg Tour Tours Packages.");
+		Thread.sleep(5000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.custom-content.ng-scope div.container.container-mobile div:nth-child(1) ol.breadcrumb:nth-child(1) li:nth-child(2) > a.ng-binding"))
+				.click();
+		Thread.sleep(5000);
+
+//ECONOMY TOUR
+		w.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[3]/a")).click();
+		System.out.println("Welcome to Economy Tours\t \n **** Here you will get Low Price Tours ****\n ");
+		Thread.sleep(3000);
+		System.out.println(w.findElement(By.xpath("//*[@id=\"main\"]/div[1]/div[1]/h4")).getText());
+		Thread.sleep(5000);
+
+		// MAgical MANALI Economy
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[1]/div[2]/div[2]/div[1]/article/figure/div[22]/a/ul[1]/li[6]"))
+				.click();
+		Thread.sleep(5000);
+		System.out.println("Welcome to MAGICAL MANALI ECONOMY");
+
+		w.manage().window().maximize();
+		JavascriptExecutor js4 = (JavascriptExecutor) w;
+		Thread.sleep(4000);
+		js4.executeScript("window.scrollBy(0, 2000)");
+		Thread.sleep(4000);
+		js4.executeScript("window.scrollBy(0, -2000)");
+		Thread.sleep(5000);
+
+		w.findElement(By.xpath("//*[@id=\"myCarousel\"]/div[2]/div[2]/button")).click();
+		Thread.sleep(5000);
+
+		// Kashmir Economy
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[1]/div[2]/div[2]/div[2]/article/figure/div[10]/a/ul[1]")).click();
+		Thread.sleep(5000);
+		System.out.println("Welcome to KASHMIR ECONOMY");
+		Thread.sleep(4000);
+
+		JavascriptExecutor js1 = (JavascriptExecutor) w;
+		Thread.sleep(4000);
+		js1.executeScript("window.scrollBy(0, 2000)");
+		Thread.sleep(4000);
+		js1.executeScript("window.scrollBy(0, -2000)");
+		Thread.sleep(5000);
+
+		w.findElement(By.xpath("//*[@id=\"myCarousel\"]/div[2]/div[2]/button")).click();
+		Thread.sleep(4000);
+
+		// Enquiry
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[1]/div[2]/div[2]/div[2]/article/figure/div[11]/div[2]/a[3]"))
+				.click();
+		Thread.sleep(4000);
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[1]/div/input")).sendKeys("Divya selekar");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[2]/div/input")).sendKeys("uran");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[3]/div[1]/input[1]"))
+				.sendKeys("9");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[4]/div[1]/input[1]"))
+				.sendKeys("divya@gmail.com");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[2]/form[1]/div[5]/div[1]/input[1]"))
+				.sendKeys("9876567890");
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		Thread.sleep(5000);
+
+		w.findElement(By.xpath("//*[@id=\"Mumbai\"]")).click();
+		System.out.println("Your packages are coming soon");
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//*[@id=\"main\"]/ol/li[2]/a")).click();
+		Thread.sleep(5000);
+
+		// TAILORMADE HOLIFDAYS
+		Actions a6 = new Actions(w);
+		WebElement wb6 = w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.megamenu-menu.tailor-made:nth-child(4) > a.text-uppercase"));
+		a6.moveToElement(wb6).click().build().perform();
+		System.out.println("Welcome to Tailormade Holidays");
+		Thread.sleep(3000);
+
+//Africa.............BOTSWANA
+		w.findElement(By.xpath("//*[@id=\"tailor-made-holidays\"]/div/div/div[1]/ul/li[1]/ul/li[1]/a")).click();
+		Thread.sleep(5000);
+		System.out.println("Welcome to BOTSWANA Tour\n");
+
+		System.out.println(
+				w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[1]/div[1]/h4[1]")).getText());
+		Thread.sleep(5000);
+
+		w.findElement(By.xpath("//v-pane-header")).click();
+		w.findElement(By.xpath("//*[@id=\"fit\"]/div/div/div/article/div[2]/div[2]/a[1]")).click();
+		Thread.sleep(3000);
+//Enquiry
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div/div[1]/button")).click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		Thread.sleep(5000);
+		System.out.println("Enquiry has been submited ");
+//FAQ
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[1]/div[2]/div/div/ul/li[4]/a")).click();
+		Thread.sleep(3000);
+		w.navigate().back();
+		Thread.sleep(5000);
+//Asia..............COMBODIA
+		Actions a11 = new Actions(w);
+		WebElement wb11 = w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.megamenu-menu.tailor-made:nth-child(4) > a.text-uppercase"));
+		a11.moveToElement(wb11).build().perform();
+		Thread.sleep(3000);
+		w.findElement(By.cssSelector(
+				"#tailor-made-holidays > div > div > div:nth-child(2) > ul > li > ul > li:nth-child(1) > a")).click();
+		Thread.sleep(5000);
+		System.out.println("Check for Asia Packages.");
+		w.findElement(By.xpath("//v-pane-header")).click();
+		Thread.sleep(4000);
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[1]/v-accordion/v-pane[2]/v-pane-header/div/h4/a")).click();
+		Thread.sleep(4000);
+
+//TAke Screenshot of combodia package
+		TakesScreenshot t4 = (TakesScreenshot) w;
+		File src4 = t4.getScreenshotAs(OutputType.FILE);
+		Files.copy(src, new File("D:\\HI\\contact.png"));
+		Thread.sleep(5000);
+		System.out.println(
+				w.findElement(By.xpath("//body/div[3]/section[1]/div[1]/div[1]/div[1]/div[1]/h4[1]")).getText());
+		Thread.sleep(5000);
+//combodia view details
+//Best of combodia
+		w.findElement(By.xpath("//*[@id=\"fit\"]/div/div/div[1]/article/div[2]/div[2]/a[1]")).click();
+		Thread.sleep(4000);
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div/div[1]/button")).click();
+		Thread.sleep(5000);
+//Enquiry
+		w.findElement(By.xpath("//body/div[9]/div[1]/div[1]/div[1]/div[1]/button[1]")).click();
+		System.out.println("Enquiry of Best of Combodia has been submited.");
+		Thread.sleep(5000);
+		w.navigate().back();
+//PHNOM PENH N EASY
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//*[@id=\"fit\"]/div/div/div[2]/article/div[2]/div[2]/a[2]")).click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[1]/div/input")).sendKeys("Komal Mhatre");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[2]/div/input")).sendKeys("pen");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[3]/div/input")).sendKeys("8");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[4]/div/input")).sendKeys("komal567@gmail.com");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[5]/div/input")).sendKeys("9876543214");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[6]/div/input")).click();
+		Thread.sleep(3000);
+//	w.findElement(By.xpath("//*[@id=\"datepicker-1613-367-39\"]/button/span")).click();
+//	w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[7]/div/div[2]")).click();
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		Thread.sleep(5000);
+		System.out.println("Enquiry of PHNOM PENH N EASY has been submited.\n");
+		Thread.sleep(5000);
+//Europe ......Albania
+		Actions a31 = new Actions(w);
+		WebElement wb31 = w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.megamenu-menu.tailor-made:nth-child(4) > a.text-uppercase"));
+		a31.moveToElement(wb31).click().build().perform();
+		Thread.sleep(3000);
+		w.findElement(By.xpath("//*[@id=\"tailor-made-holidays\"]/div/div/div[3]/ul/li[1]/ul/li[1]/a")).click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//v-pane-header")).click();
+		System.out.println("EUROPE ALBANIA Package are coming soon..........");
+//PACIFIC...........AUSTRALIA
+		Actions a41 = new Actions(w);
+		WebElement wb41 = w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(2) header.navbar-static-top.ng-scope:nth-child(2) div.topnav.custom-topnav.hidden-xs.hidden-sm div.container nav.hidden-xs.hidden-sm ul.menu.list-unstyled.mb-0 li.megamenu-menu.tailor-made:nth-child(4) > a.text-uppercase"));
+		a41.moveToElement(wb41).click().build().perform();
+		Thread.sleep(3000);
+		w.findElement(By.xpath("//*[@id=\"tailor-made-holidays\"]/div/div/div[4]/ul/li[1]/ul/li[1]/a")).click();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//v-pane-header")).click();
+		Thread.sleep(3000);
+		TakesScreenshot t1 = (TakesScreenshot) w;
+		File src1 = t1.getScreenshotAs(OutputType.FILE);
+		Files.copy(src1, new File("C:\\Users\\mhatr\\Desktop\\screenshot\\Auustl.png"));
+		Thread.sleep(5000);
+		System.out.println("Welcome To AUSTRALIA Tours ");
+//view details ......AUSTRALIAN MEMORIES
+		w.findElement(By.xpath("//*[@id=\"fit\"]/div/div/div[1]/article/div[2]/div[2]/a[1]")).click();
+		Thread.sleep(5000);
+		w.navigate().back();
+		Thread.sleep(5000);
+		w.findElement(By.xpath("//*[@id=\"fit\"]/div/div/div[1]/article/div[2]/div[2]/a[2]")).click();
+		Thread.sleep(3000);
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[1]/div/input")).sendKeys("Ranjitha");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[2]/div/input")).sendKeys("chennai");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[3]/div/input")).sendKeys("8");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[2]/form/div[4]/div/input")).sendKeys("ranji@gmail.com");
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		Thread.sleep(5000);
+		System.out.println(w.findElement(By.xpath("//*[@id=\"main\"]/div/div[1]/h4")).getText());
+		System.out.println("AUSTROLIAN MEMORIES Enquiry have been submited.");
+
+//corporate travel module 
+
+		w.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[5]/a")).click();
+		// System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+		// window handling
+		Set<String> windows = w.getWindowHandles();
+		Iterator<String> itt = windows.iterator();
+		String parent_windows = it.next();
+		String child_windows = it.next();
+
+		w.switchTo().window(child_windows);
+		Thread.sleep(2000);
+
+//Home  submodule   
+		System.out.println("Home");
+		System.out.println(w.getCurrentUrl());
+		System.out.println("Corporate Tours Inquiry");
+		// Corporate Tours Inquiry deatils
+
+		w.findElement(By.name("fname_kmice")).sendKeys("Priya");
+		// w.findElement(By.name("fname_kmice")).sendKeys("Priya");
+		w.findElement(By.name("email_kmice")).sendKeys("xyz1@gmail.com");
+		w.findElement(By.name("ctc_no_kmice")).sendKeys("9752486133");
+		w.findElement(By.name("compNM")).sendKeys("ABC");
+		w.findElement(By.name("cityNM_kmice")).sendKeys("Mumbai");
+		w.findElement(By.name("Destination_kmice")).sendKeys("US");
+		w.findElement(By.name("purpose")).click();
+		Select s2 = new Select(w.findElement(By.name("purpose")));
+		s.selectByIndex(0);
+		w.findElement(By.name("trDate_kmice")).click();
+		Select s3 = new Select(w.findElement(By.name("trDate_kmice")));
+		s1.selectByIndex(3);
+		// send to kesari travel
+
+		System.out.println(" Name:  Priya");
+		System.out.println(" Email  :xyz1@gmail.com");
+		System.out.println(" Mobile  :9752486133");
+		System.out.println(" Company Name :ABC");
+		System.out.println(" City Mumbai");
+		System.out.println(" Destination : US");
+		System.out.println("Prpose :Meeting");
+		System.out.println(" Trvael Date: August");
+		Thread.sleep(2000);
+
+		// screenshot
+		TakesScreenshot t5 = (TakesScreenshot) w;
+		File src5 = t.getScreenshotAs(OutputType.FILE);
+
+		Files.copy(src5, new File("D:\\screenshot\\ct.png"));
+		Thread.sleep(2000);
+
+//About Us submodule 
+		w.findElement(By.linkText("About Us")).click();
+		System.out.println("About Us");
+		System.out.println(w.getCurrentUrl());
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+//kesari mice 
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[3]/td")).click();
+		// w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[3]/td/a/strong")).click();
+		System.out.println("Kesari mice");
+		Thread.sleep(2000);
+		// kesari mice services
+		// w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[5]/td/a/strong")).click();
+		// System.out.println("kesari mice services");
+		// Thread.sleep(2000);
+//kesari mice list 
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr/td[1]/table/tbody/tr[7]/td/a/strong"))
+				.click();
+		System.out.println("kesari mice list");
+		Thread.sleep(2000);
+
+		// Mice tourism submodule
+		w.findElement(By.xpath("/html/body/table/tbody/tr[1]/td[2]/table[2]/tbody/tr/td[2]/a[3]")).click();
+		System.out.println("Mice Tourism");
+		System.out.println(w.getCurrentUrl());
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+
+		// meetings
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr/td[1]/table/tbody/tr[3]/td")).click();
+		// w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr/td[1]/table/tbody/tr[3]/td/a/strong")).click();
+		System.out.println("Meetings");
+		Thread.sleep(3000);
+		// conferences
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr/td[1]/table/tbody/tr[7]/td/a/strong"))
+				.click();
+		System.out.println("Conferences/Conventions");
+		Thread.sleep(3000);
+		// exhibitions
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr/td[1]/table/tbody/tr[9]/td/a/strong"))
+				.click();
+		System.out.println("Exhibitions");
+		Thread.sleep(3000);
+
+// MICE Itineraries  submodule 
+		w.findElement(By.linkText("MICE Itineraries")).click();
+		System.out.println(" MICE Itineraries ");
+		System.out.println(w.getCurrentUrl());
+		System.out.println(w.getTitle());
+		Thread.sleep(3000);
+
+		// INDIA
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[1]/td[2]/table/tbody/tr[3]/td/a/img"))
+				.click();
+		// w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[1]/td[2]/table/tbody/tr[1]/td/a/strong")).click();
+		System.out.println("INDIA");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		// Hydrabad
+		w.findElement(
+				By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[2]/td[1]/a/strong"))
+				.click();
+		System.out.println("Hydrabad");
+		Thread.sleep(3000);
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		w.navigate().back();
+		Thread.sleep(4000);
+		// Jaipur
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[2]/td[5]"))
+				.click();
+		System.out.println("Jaipur");
+		Thread.sleep(3000);
+		System.out.println(w.getCurrentUrl());
+		w.navigate().back();
+		Thread.sleep(4000);
+		// Goa
+		w.findElement(
+				By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[5]/td[1]/a/img"))
+				.click();
+		// w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[6]/td[1]")).click();
+		System.out.println("Goa");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		w.navigate().back();
+		Thread.sleep(4000);
+		// Mysore
+		w.findElement(
+				By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[5]/td[5]/a/img"))
+				.click();
+		// w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[6]/td[5]")).click();
+		System.out.println("Mysore");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		w.navigate().back();
+		Thread.sleep(4000);
+		// Nainital
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[10]/td[1]"))
+				.click();
+		System.out.println("Nainital");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		w.navigate().back();
+		Thread.sleep(4000);
+		// Mahabaleshwar
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[10]/td[7]"))
+				.click();
+		System.out.println("Mahabaleshwar");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		w.navigate().back();
+		Thread.sleep(4000);
+		// screenshot
+
+		TakesScreenshot t6 = (TakesScreenshot) w;
+		File src6 = t6.getScreenshotAs(OutputType.FILE);
+
+		Files.copy(src1, new File("D:\\screenshot\\mice.png"));
+		Thread.sleep(2000);
+
+		// DUBAI
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[1]/table/tbody/tr[3]/td"))
+				.click();
+		System.out.println("DUBAI");
+		Thread.sleep(3000);
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		// Dubai:Conference Tour
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[2]/td[1]"))
+				.click();
+		Thread.sleep(3000);
+		w.navigate().back();
+		Thread.sleep(3000);
+		// Dubai:Maharashtra Udyog Jatra
+		// (2 Nights/3 Days)
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[2]/td[5]"))
+				.click();
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		w.navigate().back();
+		Thread.sleep(4000);
+		// Dubai: Maharashtra Udyog Jatra
+		// (4 Nights/5 Days)
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[6]/td"))
+				.click();
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		w.navigate().back();
+		Thread.sleep(3000);
+
+//SINGAPORE
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[1]/table/tbody/tr[7]/td"))
+				.click();
+		System.out.println("SINGAPORE");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		// Singapore : Conference
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[3]/table/tbody/tr[2]/td[1]"))
+				.click();
+		System.out.println("Singapore : Conference ");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		w.navigate().back();
+		Thread.sleep(3000);
+
+//THAILAND
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[1]/table/tbody/tr[11]/td"))
+				.click();
+		System.out.println("THAILAND");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+
+//SWITZERLAND
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[2]/td[1]/table/tbody/tr[15]/td"))
+				.click();
+		System.out.println("SWITZERLAND");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		System.out.println(w.getTitle());
+		Thread.sleep(3000);
+
+//success stories submodule
+		w.findElement(By.linkText("Success Stories")).click();
+		System.out.println("Sucess Stories");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(3000);
+		System.out.println(w.getTitle());
+		Thread.sleep(3000);
+		// special needs
+		w.findElement(By.xpath("/html/body/table/tbody/tr[4]/td[2]/table/tbody/tr[5]/td")).click();
+		System.out.println("Special needs");
+		Thread.sleep(3000);
+
+//careers submodule
+		w.findElement(By.linkText("Careers")).click();
+		System.out.println("Careers");
+		System.out.println(w.getCurrentUrl());
+		System.out.println(w.getTitle());
+
+		Thread.sleep(3000);
+//contact us submodule 
+		w.findElement(By.linkText("Contact Us")).click();
+		System.out.println("Contact us");
+//URL
+		System.out.println(w.getCurrentUrl());
+//title
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+
+		w.findElement(By.name("full_nm")).sendKeys("Siya");
+		w.findElement(By.name("Compname")).sendKeys("DJK");
+		w.findElement(By.name("MobileN")).sendKeys("8655489725");
+		w.findElement(By.name("email")).sendKeys("siya2@gmail.com");
+		w.findElement(By.name("purpose")).click();
+		Select s5 = new Select(w.findElement(By.name("purpose")));
+		s2.selectByIndex(1);
+		w.findElement(By.name("Dest")).sendKeys("UK");
+		w.findElement(By.name("trMonth")).click();
+		Select s6 = new Select(w.findElement(By.name("trMonth")));
+		s3.selectByIndex(3);
+		w.findElement(By.name("trYr")).click();
+		Select s4 = new Select(w.findElement(By.name("trYr")));
+		s4.selectByIndex(2);
+		w.findElement(By.name("DaysN")).sendKeys("5");
+		w.findElement(By.name("PaxN")).sendKeys("2");
+		w.findElement(By.name("comments")).sendKeys("Nothing");
+		// submit
+
+		Thread.sleep(2000);
+//branches 
+		w.findElement(By.linkText("Branch Offices")).click();
+		System.out.println("Branch Offices");
+		Thread.sleep(2000);
+
+// screenshot 
+
+		TakesScreenshot t7 = (TakesScreenshot) w;
+		File src7 = t7.getScreenshotAs(OutputType.FILE); // captured the ss
+
+		Files.copy(src7, new File("D:\\screenshot\\branch.png"));
+		Thread.sleep(2000);
+		// function not working
+		/*
+		 * w.findElement(By.xpath("//*[@id=\"leftcolumn\"]/a[7]")).click();
+		 * w.findElement(By.
+		 * cssSelector("body:nth-child(2) div:nth-child(2) > a.text:nth-child(7)")).
+		 * click(); w.findElement(By.linkText("HYDERABAD")).click(); Thread.sleep(3000);
+		 * w.findElement(By.xpath("//*[@id=\"leftcolumn\"]/a[13]")).click();
+		 * w.findElement(By.linkText("JAIPUR")).click(); w.findElement(By.
+		 * cssSelector("body:nth-child(2) div:nth-child(2) > a.text:nth-child(13)")).
+		 * click(); Thread.sleep(3000);
+		 * w.findElement(By.xpath("//*[@id=\"leftcolumn\"]/a[9]")).click();
+		 * w.findElement(By.linkText("KOLKATA")).click(); w.findElement(By.
+		 * cssSelector("body:nth-child(2) div:nth-child(2) > a.text:nth-child(9)")).
+		 * click(); Thread.sleep(3000);
+		 */
+// Preferred Sales Agents
+		w.findElement(By.linkText("Preferred Sales Agents")).click();
+		System.out.println(" Preferred Sales Agents");
+		Thread.sleep(1000);
+		// Punjab
+//w.findElement(By.linkText("PUNJAB")).click();
+		// w.findElement(By.cssSelector("body:nth-child(2) div:nth-child(2) >
+		// a.text:nth-child(13)")).click();
+		// w.findElement(By.xpath("//*[@id=\"leftcolumn\"]/a[13]")).click();
+		// Thread.sleep(1000);
+		// Aasam
+		// w.findElement(By.linkText("ASSAM")).click();
+		// w.findElement(By.cssSelector("body:nth-child(2) div:nth-child(2) >
+		// a.text:nth-child(2)")).click();
+		// w.findElement(By.xpath("//*[@id=\"leftcolumn\"]/a[2]")).click();
+		// Thread.sleep(2000);
+//franchisee
+		w.findElement(By.linkText("Franchisee")).click();
+		System.out.println("Franchisee");
+		Thread.sleep(2000);
+//back to previous page	
+
+		w.switchTo().window(parent_windows);
+		Thread.sleep(2000);
+
+		// Open FOREX & REMITTANCES module
+
+		w.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[6]/a")).click();
+		System.out.println(" FOREX & REMITTANCES");
+		Thread.sleep(2000);
+		System.out.println(w.getCurrentUrl());
+
+		// Scroll Up down the page
+		JavascriptExecutor jjs = (JavascriptExecutor) w;
+		Thread.sleep(2000);
+
+		jjs.executeScript("window.scrollBy(0,2000)");
+		Thread.sleep(2000);
+
+		jjs.executeScript("window.scrollBy(0,-2000)");
+		Thread.sleep(1000);
+
+		// Enquiries //
+		w.findElement(By.name("name")).sendKeys("Riya");
+		w.findElement(By.name("mobileNumber")).sendKeys("9945826472");
+		w.findElement(By.name("email")).sendKeys("riya12@gmai.com");
+		w.findElement(By.name("purposeOfTravel")).click();
+		Select s8 = new Select(w.findElement(By.name("purposeOfTravel")));
+		s5.selectByVisibleText("Studies");
+		w.findElement(By.id("destination")).sendKeys("London");
+		w.findElement(By.name("products")).click();
+		Select s9 = new Select(w.findElement(By.name("products")));
+		Thread.sleep(1000);
+		s6.selectByVisibleText("Travel Insurance");
+		w.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div[2]/div/form/div[7]/div/label")).click();
+
+		// print
+		System.out.println("Name : Riya");
+		System.out.println("Mobile Number :9945826472");
+		System.out.println("Emai : riya12@gmai.com");
+		System.out.println("Purpose of Travel : Studies");
+		System.out.println("Destination : London");
+		System.out.println(" Products : Travel Insurance");
+		// Send to Kesari Forex Expert//
+
+		// check BUY FOREX and SELL FOREX//
+
+		/*
+		 * w.findElement(By.xpath("//*[@id=\"buyFrxForm\"]/div[2]/div[1]/div/select")).
+		 * click(); Select s2= new Select(w.findElement(By.xpath(
+		 * "//*[@id=\"buyFrxForm\"]/div[2]/div[1]/div/select")));
+		 * s2.selectByVisibleText("US Dollar");
+		 * w.findElement(By.xpath("//*[@id=\"buyFrxForm\"]/div[2]/div[3]/div/input")).
+		 * sendKeys("4000");
+		 * 
+		 * Thread.sleep(1000); // w.findElement(By.
+		 * cssSelector("div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.forex-remittance-box.forex-currency-box:nth-child(2) div.row div.col-md-6.col-xs-12:nth-child(1) div.tab-container.shadow div.tab-content.tab-content--style-1 div.tab-pane.fade.active.in:nth-child(1) form.ng-pristine.ng-invalid.ng-invalid-required div.row:nth-child(2) div.col-md-3.col-xs-12:nth-child(6) > button.btn.btn-grey.btn-block.pull-right"
+		 * )).click(); //
+		 * w.findElement(By.xpath("//*[@id=\"buyFrxForm\"]/div[2]/div[6]/button")).click
+		 * (); // w.findElement(By.xpath(
+		 * "/html[1]/body[1]/div[3]/section[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[2]/div[6]/button[1]"
+		 * )).click(); // click on continue button w.findElement(By.xpath(
+		 * "//*[@id=\"content\"]/div/div[2]/div/div[1]/div/ul/li[2]/a")).click();
+		 * System.out.println("SELL FOREX"); /*
+		 * w.findElement(By.xpath("//*[@id=\"sellFrxForm\"]/div[2]/div[1]/div/select")).
+		 * click(); Select s3= new Select(w.findElement(By.xpath(
+		 * "//*[@id=\"sellFrxForm\"]/div[2]/div[1]/div/select"))); s3.selectByIndex(0);
+		 * w.findElement(By.xpath("//*[@id=\"sellFrxForm\"]/div[2]/div[3]/div/input")).
+		 * sendKeys("2000");
+		 * w.findElement(By.xpath("//*[@id=\"sellFrxForm\"]/div[2]/div[6]/button")).
+		 * click();
+		 */
+
+		// Our Products & Offerings//
+		System.out.println("Our Products & Offerings");
+		w.findElement(By.xpath("//*[@id=\"content\"]/div/div[3]/div/div/ul/li[1]/div")).click();
+		System.out.println("FOREX CARD");
+		Thread.sleep(1000);
+		w.findElement(By.xpath("//*[@id=\"content\"]/div/div[3]/div/div/ul/li[2]/div")).click();
+		System.out.println("TRAVELLER CHEQUES");
+		Thread.sleep(1000);
+		w.findElement(By.xpath("//*[@id=\"content\"]/div/div[3]/div/div/ul/li[3]/div")).click();
+		System.out.println("CURRENCY NOTES");
+		Thread.sleep(1000);
+		w.findElement(By.xpath("//*[@id=\"content\"]/div/div[3]/div/div/ul/li[4]/div")).click();
+		System.out.println("MONEY TRANSFER");
+		Thread.sleep(1000);
+		w.findElement(By.xpath("//*[@id=\"content\"]/div/div[3]/div/div/ul/li[5]/div")).click();
+		System.out.println("TRAVEL INSURANCE");
+		Thread.sleep(1000);
+
+		// Check Multi-purpose Remittance Solutions
+		System.out.println("Multi-purpose Remittance Solutions");
+		w.findElement(By.xpath("//*[@id=\"content\"]/div/div[4]/div/div/ul/li[1]/div")).click();
+		System.out.println("TRAVEL ABROAD");
+		Thread.sleep(1000);
+		w.findElement(By.xpath("//*[@id=\"content\"]/div/div[4]/div/div/ul/li[2]/div")).click();
+		System.out.println("OVERSEAS EDUCATION");
+		Thread.sleep(1000);
+		w.findElement(By.xpath("//*[@id=\"content\"]/div/div[4]/div/div/ul/li[3]/div")).click();
+		System.out.println("MEDICAL TREATMENT");
+		Thread.sleep(1000);
+		w.findElement(By.xpath("//*[@id=\"content\"]/div/div[4]/div/div/ul/li[4]/div")).click();
+		System.out.println("CONFERENCES AND SEMINARS");
+		Thread.sleep(2000);
+
+		// screenshot
+		/*
+		 * TakesScreenshot t1=(TakesScreenshot) w; File src1
+		 * =t1.getScreenshotAs(OutputType.FILE); // captured the ss
+		 * 
+		 * Files.copy(src1, new File("D:\\screenshot\\question.png"));
+		 */
+
+		// Frequently Asked Questions
+		// Thread.sleep(3000);
+		// 3
+		/*
+		 * w.findElement(By.
+		 * cssSelector("div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.forex-remittance-box:nth-child(6) div.row div.col-xs-12 div.box-white.shadow div.toggle-container.toggle-container--style-1 div.panel:nth-child(3) h4.panel-title > a.collapsed"
+		 * )).click(); //w.findElement(By.xpath(
+		 * "//*[@id=\"content\"]/div/div[6]/div/div/div/div/div[3]/h4/a")).click();
+		 * Thread.sleep(2000); w.findElement(By.xpath(
+		 * "//*[@id=\"content\"]/div/div[6]/div/div/div/div/div[3]/h4/a")).click();
+		 * Thread.sleep(2000); //7 w.findElement(By.xpath(
+		 * "//*[@id=\"content\"]/div/div[6]/div/div/div/div/div[7]/h4/a")).click();
+		 * Thread.sleep(2000); w.findElement(By.xpath(
+		 * "//*[@id=\"content\"]/div/div[6]/div/div/div/div/div[7]/h4/a")).click();
+		 * Thread.sleep(2000); //w.findElement(By.
+		 * cssSelector("div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.forex-remittance-box:nth-child(6) div.row div.col-xs-12 div.box-white.shadow div.toggle-container.toggle-container--style-1 div.panel:nth-child(2) h4.panel-title > a.collapsed"
+		 * )).click();
+		 */
+
+		// Open CRUSIES module
+		w.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[7]/a")).click();
+		Thread.sleep(2000);
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+
+		// screenshot
+		TakesScreenshot t8 = (TakesScreenshot) w;
+		File src8 = t8.getScreenshotAs(OutputType.FILE); // captured the ss
+
+		Files.copy(src8, new File("D:\\screenshot\\c.png"));
+
+		// Cordelia Crusies
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[1]/v-accordion/v-pane/v-pane-content")).click();
+		System.out.println("Cordelia Crusies");
+		Thread.sleep(2000);
+		System.out.println(w.getCurrentUrl());
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+
+		// screenshot
+		TakesScreenshot t9 = (TakesScreenshot) w;
+		File src9 = t9.getScreenshotAs(OutputType.FILE); // captured the ss
+
+		Files.copy(src9, new File("D:\\screenshot\\CC.png"));
+
+		// view details= Mumbai High Sea
+		Thread.sleep(2000);
+		w.findElement(By.linkText("View Details")).click();
+		System.out.println("Mumbai High Sea");
+		Thread.sleep(2000);
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+		System.out.println("View Details");
+		Thread.sleep(2000);
+
+		// scroll
+		JavascriptExecutor jjs1 = (JavascriptExecutor) w;
+		Thread.sleep(3000);
+
+		jjs1.executeScript("window.scrollBy(0,2000)");
+		Thread.sleep(2000);
+
+		jjs1.executeScript("window.scrollBy(0,-2000)");
+		Thread.sleep(2000);
+
+		// Inclusion/Exclusion
+		// w.findElement(By.linkText("Inclusion/Exclusion")).click();
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/div/div/ul/li[2]/a")).click();
+		System.out.println("Inclusion/Exclusion");
+		Thread.sleep(2000);
+
+		// FAQ
+		// w.findElement(By.linkText("FAQ's")).click();
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/div/div/ul/li[3]/a")).click();
+		System.out.println("FAQ");
+		// option select 1
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container div.row div.col-xs-12 div.nav-tabs-custom.nav-tabs-custom--cruise div.ng-isolate-scope div.tab-content div.tab-pane.ng-scope.active:nth-child(2) div.toggle-container.toggle-container--style-1.ng-scope div.panel:nth-child(1) h4.panel-title > a.collapsed"))
+				.click();
+		Thread.sleep(2000);
+		w.findElement(By.xpath("//*[@id=\"faq\"]/div[1]/h4/a")).click();
+		// w.navigate().back();
+		Thread.sleep(2000);
+		// 2
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container div.row div.col-xs-12 div.nav-tabs-custom.nav-tabs-custom--cruise div.ng-isolate-scope div.tab-content div.tab-pane.ng-scope.active:nth-child(2) div.toggle-container.toggle-container--style-1.ng-scope div.panel:nth-child(2) h4.panel-title > a.collapsed"))
+				.click();
+		Thread.sleep(2000);
+		w.findElement(By.xpath("//*[@id=\"faq\"]/div[2]/h4/a")).click();
+		Thread.sleep(2000);
+
+		w.navigate().back();
+		Thread.sleep(2000);
+
+		// enquiry
+		w.findElement(By.linkText("Enquiry")).click();
+		System.out.println("Enquiry");
+		Thread.sleep(2000);
+
+		// cross sign
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		Thread.sleep(2000);
+
+		// view details=Mumbai Goa
+		// w.findElement(By.linkText("View Details")).click();
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div/div/div[2]/article/figure/div[2]/div[2]/a[1]"))
+				.click();
+		System.out.println("Mumbai Goa");
+		Thread.sleep(2000);
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+		System.out.println("View Details");
+		Thread.sleep(2000);
+		// scroll
+		JavascriptExecutor js2 = (JavascriptExecutor) w;
+		Thread.sleep(3000);
+		js2.executeScript("window.scrollBy(0,2000)");
+		Thread.sleep(2000);
+		js2.executeScript("window.scrollBy(0,-2000)");
+		Thread.sleep(2000);
+		// enquiry
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[1]/div/div[3]/button")).click();
+		System.out.println("Enquiry");
+		Thread.sleep(2000);
+		// cross sign
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		Thread.sleep(2000);
+		// Inclusion /Exclusion
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/div/div/ul/li[2]/a")).click();
+		System.out.println("Inclusion /Exclusion");
+		Thread.sleep(2000);
+		// FAQ
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/div/div/ul/li[3]/a")).click();
+		System.out.println("FAQ");
+		Thread.sleep(2000);
+		// 1
+		w.findElement(By.xpath("//*[@id=\"faq\"]/div[1]/h4/a")).click();
+		Thread.sleep(2000);
+		w.findElement(By.xpath("//*[@id=\"faq\"]/div[1]/h4/a")).click();
+		Thread.sleep(2000);
+		// select 3
+		// w.findElement(By.xpath("//*[@id=\"faq\"]/div[3]/h4/a")).click();
+		// Thread.sleep(2000);
+		// w.findElement(By.xpath("//*[@id=\"faq\"]/div[3]/h4/a")).click();
+		w.navigate().back();
+		Thread.sleep(2000);
+
+		// enquiry
+		// w.findElement(By.linkText("Enquiry")).click();
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div/div/div[2]/article/figure/div[2]/div[2]/a[2]"))
+				.click();
+		System.out.println("Enquiry");
+		// cross
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		Thread.sleep(2000);
+
+		// Mumbai Dui
+		// details
+		// w.findElement(By.linkText("View Details")).click();
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div/div/div[3]/article/figure/div[2]/div[2]/a[1]"))
+				.click();
+		System.out.println("Mumbai Dui");
+		Thread.sleep(2000);
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+		System.out.println("View Details");
+		Thread.sleep(2000);
+		// Inclusion/Exclusion
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/div/div/ul/li[2]/a")).click();
+		System.out.println("Inclusion/Exclusion");
+		Thread.sleep(2000);
+		// FAQ
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/div/div/ul/li[3]/a")).click();
+		System.out.println("FAQ");
+		Thread.sleep(2000);
+		w.navigate().back();
+		Thread.sleep(2000);
+
+		// enquiry
+		// w.findElement(By.linkText("Enquiry")).click();
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div/div/div[3]/article/figure/div[2]/div[2]/a[2]"))
+				.click();
+		System.out.println("Enquiry");
+		Thread.sleep(2000);
+		/// cross
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		Thread.sleep(2000);
+
+		// checkbox
+		System.out.println("Destinations");
+		// Antartica
+		// w.findElement(By.xpath("//*[@id=\"main\"]/div/div[1]/v-accordion/v-pane/v-pane-content/div/div/ul/li[1]/div")).click();
+		w.findElement(
+				By.xpath("//*[@id=\"main\"]/div/div[1]/v-accordion/v-pane/v-pane-content/div/div/ul/li[2]/div/label"))
+				.click();
+		System.out.println("Antartica");
+		Thread.sleep(2000);
+		// Australia
+		w.findElement(
+				By.xpath("//*[@id=\"main\"]/div/div[1]/v-accordion/v-pane/v-pane-content/div/div/ul/li[4]/div/label"))
+				.click();
+		System.out.println("Australia");
+		Thread.sleep(2000);
+		// Caribbean
+		w.findElement(
+				By.xpath("//*[@id=\"main\"]/div/div[1]/v-accordion/v-pane/v-pane-content/div/div/ul/li[7]/div/label"))
+				.click();
+		System.out.println("Caribbean");
+		Thread.sleep(2000);
+		// North Europe
+		w.findElement(
+				By.xpath("//*[@id=\"main\"]/div/div[1]/v-accordion/v-pane/v-pane-content/div/div/ul/li[11]/div/label"))
+				.click();
+		System.out.println("North Europe");
+		Thread.sleep(2000);
+		// Russia Central Asia
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div[1]/v-accordion/v-pane/v-pane-content/div/div/ul/li[13]/div"))
+				.click();
+		System.out.println("Russia Central Asia");
+		Thread.sleep(2000);
+
+		// Best Deals module
+		w.findElement(By.xpath("/html[1]/body[1]/div[2]/header[1]/div[1]/div[2]/nav[1]/ul[1]/li[8]/a[1]")).click();
+		System.out.println("Best Deals");
+		System.out.println(w.getTitle());
+		Thread.sleep(1000);
+
+		// screenshot
+		TakesScreenshot t10 = (TakesScreenshot) w;
+		File src10 = t10.getScreenshotAs(OutputType.FILE); // captured the ss
+
+		Files.copy(src10, new File("D:\\screenshot\\j.png"));
+
+		// HYDERABAD RAMOJI open
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div/div[1]/article/figure/div[2]/a/ul[1]")).click();
+		System.out.println("HYDERABAD RAMOJI ");
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+		// scroll
+		JavascriptExecutor js3 = (JavascriptExecutor) w;
+		Thread.sleep(3000);
+
+		js3.executeScript("window.scrollBy(0,2000)");
+		Thread.sleep(4000);
+
+		js3.executeScript("window.scrollBy(0,-2000)");
+		Thread.sleep(3000);
+
+		// date
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[1]/button")).click();
+		System.out.println("AUG");
+		Thread.sleep(2000);
+
+		// available seats
+		w.findElement(By.xpath("//*[@id=\"tbody\"]/table/tbody/tr/td[1]/div[2]/p")).click();
+		System.out.println("Available seats");
+		Thread.sleep(2000);
+
+		// cross sign for available seats
+		w.findElement(By.xpath("//*[@id=\"room-booking\"]/div/div[1]/button")).click();
+		Thread.sleep(2000);
+
+		// Enquiry
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/button[1]")).click();
+		Thread.sleep(2000);
+
+		// cross mark
+		w.findElement(By.cssSelector(
+				"body.modal-open:nth-child(2) div.modal.ng-isolate-scope.in:nth-child(20) div.modal-dialog.modal-lg div.modal-content div.ng-scope div.modal-header.modal-header--transparent.modal-header--bg > button.close"))
+				.click();
+
+		Thread.sleep(2000);
+		// tour price
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/button[2]")).click();
+		System.out.println("Tour price");
+		Thread.sleep(2000);
+
+		// cross mark
+		w.findElement(By.cssSelector(
+				"body.modal-open:nth-child(2) div.modal.ng-isolate-scope.in:nth-child(20) div.modal-dialog.modal-lg div.modal-content div.modal-content.ng-scope div.modal-header > button.close"))
+				.click();
+		// w.findElement(By.xpath("//*[@id=\"room-booking\"]/div/div[1]/button")).click();
+
+		// date
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[2]/button")).click();
+		System.out.println("SEPT");
+		Thread.sleep(2000);
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[3]/button")).click();
+		System.out.println("NOV");
+		Thread.sleep(2000);
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[4]/button")).click();
+		System.out.println("DEC");
+		Thread.sleep(2000);
+		// w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[5]/button")).click();
+
+		// highlight
+		// w.findElement(By.linkText("Highlight")).click();
+		// w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[1]/div[2]/div/div[1]/ul/li[2]/a")).click();
+		// w.findElement(By.cssSelector("div.ng-scope:nth-child(3)
+		// section.ng-scope:nth-child(3) div.container div.row:nth-child(3)
+		// div.col-md-9.col-xs-12 div.row div.col-xs-12 div.tab-container:nth-child(1)
+		// ul.nav.nav-tabs.nav-tabs-style-1 li.ng-scope:nth-child(2) >
+		// a:nth-child(1)")).click();
+		// enquiry
+		// w.findElement(By.cssSelector("div.ng-scope:nth-child(3)
+		// section.ng-scope:nth-child(3) div.container div.row:nth-child(3)
+		// div.col-md-3.col-xs-12 div.sidebar-detail-page
+		// div.sidebar-detail-page__tour-dep-box.box-white.shadow >
+		// button.btn.btn-grey.btn-block:nth-child(9)")).click();
+
+		w.navigate().back();
+		Thread.sleep(2000);
+
+		// inquiry
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div/div[1]/article/figure/div[3]/div[2]/a[2]")).click();
+		// w.findElement(By.cssSelector("div.ng-scope:nth-child(3)
+		// section.ng-scope:nth-child(3) div.container div.box-container.shadow div.row
+		// div.col-lg-3.col-md-4.col-sm-6.col-xs-12.ng-scope:nth-child(1) article.box
+		// figure.badge-container div.box__details
+		// div.action-btn.action-btn--two-btn.ng-scope >
+		// a.btn.btn-grey:nth-child(2)")).click();
+		System.out.println("Inquiry");
+		Thread.sleep(3000);
+		// cross button
+		w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		Thread.sleep(3000);
+
+		// KANYAKUMARI KOVALAM
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div/div[4]/article/figure/div[2]/a/ul[1]")).click();
+		// w.findElement(By.xpath("//*[@id=\"main\"]/div/div/div[4]/article/figure/div[3]/div[2]/a[1]")).click();
+		System.out.println("KANYAKUMARI KOVALAM");
+		Thread.sleep(2000);
+		// scroll
+		JavascriptExecutor js5 = (JavascriptExecutor) w;
+		Thread.sleep(3000);
+
+		js5.executeScript("window.scrollBy(0,2000)");
+		Thread.sleep(2000);
+
+		js5.executeScript("window.scrollBy(0,-2000)");
+		// date
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[1]/button")).click();
+		System.out.println("AUG");
+		Thread.sleep(2000);
+		// available seats
+		w.findElement(By.xpath("//*[@id=\"tbody\"]/table/tbody/tr[1]/td[1]/div[2]/p")).click();
+		System.out.println("Available seats");
+		Thread.sleep(2000);
+		// cross sign
+		w.findElement(By.xpath("//*[@id=\"room-booking\"]/div/div[1]/button")).click();
+		Thread.sleep(2000);
+		// tour price
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/button[2]")).click();
+		System.out.println("Tour price");
+		Thread.sleep(2000);
+		// cross sign
+		w.findElement(By.cssSelector(
+				"body.modal-open:nth-child(2) div.modal.ng-isolate-scope.in:nth-child(20) div.modal-dialog.modal-lg div.modal-content div.modal-content.ng-scope div.modal-header > button.close"))
+				.click();
+		Thread.sleep(2000);
+		// enquiry
+		// w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/button[1]")).click();
+		// date
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[2]/button")).click();
+		System.out.println("SEPT");
+		Thread.sleep(2000);
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[3]/button")).click();
+		System.out.println("NOV");
+		Thread.sleep(2000);
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[4]/button")).click();
+		System.out.println("DEC");
+		Thread.sleep(2000);
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div[2]/div/div[1]/ul[1]/li[5]/button")).click();
+		System.out.println("JAN");
+
+		Thread.sleep(2000);
+		w.navigate().back();
+		Thread.sleep(3000);
+		// enquiry
+		// w.findElement(By.linkText("Enquiry")).click();
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(3) div.container div.box-container.shadow div.row div.col-lg-3.col-md-4.col-sm-6.col-xs-12.ng-scope:nth-child(4) article.box figure.badge-container div.box__details div.action-btn.action-btn--two-btn.ng-scope > a.btn.btn-grey:nth-child(2)"))
+				.click();
+		System.out.println("Enquiry");
+		Thread.sleep(3000);
+		// cross sign for inquiry
+		// w.findElement(By.xpath("//*[@id=\"container\"]/div[1]/button")).click();
+		w.findElement(By.cssSelector(
+				"body.modal-open:nth-child(2) div.modal.ng-isolate-scope.in:nth-child(20) div.modal-dialog.modal-lg div.modal-content div.ng-scope div.modal-header.modal-header--transparent.modal-header--bg > button.close"))
+				.click();
+		Thread.sleep(2000);
+
+		// MAGICAL MANALI ECONOMY
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div/div[2]/article/figure/div[2]/a/ul[1]")).click();
+		// w.findElement(By.xpath("//*[@id=\"main\"]/div/div/div[2]/article/figure/div[3]/div[2]/a[1]")).click();
+		Thread.sleep(2000);
+		System.out.println("MAGICAL MANALI ECONOMY");
+		Thread.sleep(2000);
+		System.out.println(w.getTitle());
+		// scroll
+		JavascriptExecutor js6 = (JavascriptExecutor) w;
+		Thread.sleep(3000);
+
+		js6.executeScript("window.scrollBy(0,2000)");
+		Thread.sleep(2000);
+
+		js6.executeScript("window.scrollBy(0,-2000)");
+		Thread.sleep(2000);
+
+		// MAGICAL MANALI ECONOMY-June
+		w.findElement(By.xpath("//*[@id=\"main\"]/div[1]/div/div/data-owl-carousel/div[1]/div/div/div/a/div[2]/h4"))
+				.click();
+		System.out.println("MAGICAL MANALI ECONOMY");
+		System.out.println(w.getTitle());
+		Thread.sleep(2000);
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		// scroll
+		JavascriptExecutor jjs7 = (JavascriptExecutor) w;
+		Thread.sleep(3000);
+
+		jjs7.executeScript("window.scrollBy(0,2000)");
+		Thread.sleep(2000);
+
+		jjs7.executeScript("window.scrollBy(0,-2000)");
+		Thread.sleep(2000);
+		w.navigate().back();
+		Thread.sleep(2000);
+		w.navigate().back();
+
+		// about us module
+		w.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[9]/a")).click();
+		System.out.println("About Us");
+		Thread.sleep(2000);
+		System.out.println(w.getTitle());
+		// screenshot
+		TakesScreenshot t11 = (TakesScreenshot) w;
+		File src11 = t11.getScreenshotAs(OutputType.FILE);
+
+		Files.copy(src11, new File("D:\\screenshot\\A1.png"));
+		// company profile
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div/div/div/ul/li[2]/a")).click();
+		System.out.println("COMPANY PROFILE");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		// why kesari
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div/div/div/ul/li[3]/a")).click();
+		System.out.println("WHY KESARI");
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		// awards and accolades
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div/div/div/ul/li[4]/a")).click();
+		Thread.sleep(2000);
+		System.out.println("AWARDS AND ACCOLADES");
+		Thread.sleep(2000);
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+		// 1st 2017 award
+		w.findElement(By.xpath("//*[@id=\"awards\"]/div[1]/h4/a")).click();
+		Thread.sleep(2000);
+		w.findElement(By.cssSelector(
+				"div.ng-scope:nth-child(3) section.ng-scope:nth-child(2) div.container div.row div.col-xs-12 div.tab-container.nav-tabs-custom div.ng-isolate-scope:nth-child(3) div.tab-content div.tab-pane.ng-scope.active:nth-child(4) div.toggle-container.toggle-container--style-1.ng-scope div.panel:nth-child(3) h4.panel-title > a:nth-child(1)"))
+				.click();
+		Thread.sleep(2000);
+		// guest corner
+		w.findElement(By.xpath("//*[@id=\"main\"]/div/div/div/div/ul/li[5]/a")).click();
+		System.out.println("GUEST CORNER");
+		Thread.sleep(2000);
+		System.out.println(w.getCurrentUrl());
+		Thread.sleep(2000);
+
+	}
+
+}
